@@ -1,6 +1,10 @@
 body{
   background-color: #202124;
   color: white;
+  
+}
+
+#root{
   overflow: hidden;
   max-height: 100vh;
   max-width: 100vw;
