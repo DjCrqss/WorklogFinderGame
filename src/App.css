@@ -1,0 +1,133 @@
+body{
+  background-color: #202124;
+  color: white;
+  overflow: clip;
+}
+
+
+/* DayView */
+#dayview-container{
+    width: 400px;
+    height: 150vmax;
+    -webkit-backface-visibility: visible;
+    transform-origin: top left;
+    -webkit-transform: rotateX(62deg) rotateZ(330deg);
+    backface-visibility: visible;
+    transform: rotateX(34deg) rotateZ(355deg);
+}
+
+.time-block{
+  background-color: white;
+  border-top: 1px solid lightgray;
+  padding: 0.5em;
+  position: absolute;
+  font-size: 2em;
+  color: darkgray;
+  width: 250px;
+  box-sizing: border-box;
+}
+
+.work-block-container{
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.work-block{
+  
+  height: 70%;
+  padding: 0.75em;
+  position: absolute;
+  font-size: 1.5em;
+  color: darkgray;
+  width: 260px;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+
+  /* Ghost styling */
+  backdrop-filter: blur(3px);
+  /*border: 1px solid #d3d3d338; STYLE 1: 3D
+  background-color: rgba(224, 224, 224, 0.189);
+  box-shadow: #5252523b -26px 1px 20px 0px, inset #1a1a1a7a -7px -4px 9px, inset #ffffff7a 4px 5px 8px;*/ 
+  border: 3px dashed #ffbe70;
+  background-color: rgb(255 172 73 / 36%);
+  box-shadow: #bf8e5575 -26px 1px 20px 0px;
+
+
+
+  margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+/* QR */
+#qr-fab{
+  position: fixed;
+  bottom: 2em;
+  left: 2em;
+  background-color: aquamarine;
+  height: 4em;
+  min-width: 4em;
+  font-weight: bold;
+  display: flex;
+  font-size: 0.8em;
+  justify-content: center;
+  padding: 1em 2em;
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: 100px;
+  color: black;
+  z-index: 5;
+}
+
+.popupDrawer{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 100vw);
+  background-color: white;
+
+  padding: 5em 2em;
+  box-sizing: border-box;
+  transition: bottom 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px 40px 0 0;
+  z-index: 11;
+}
+
+.popupBackdrop{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.485);
+  backdrop-filter: blur(5px);
+  transition: opacity 1s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 10;
+}
+
+#reader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  min-height: min(50vw, 400px);
+}
+
+
