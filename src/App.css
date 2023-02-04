@@ -1,7 +1,9 @@
 body{
   background-color: #202124;
   color: white;
-  overflow: clip;
+  overflow: hidden;
+  max-height: 100vh;
+  max-width: 100vw;
 }
 
 
@@ -11,7 +13,7 @@ body{
     height: 150vmax;
     -webkit-backface-visibility: visible;
     transform-origin: top left;
-    -webkit-transform: rotateX(62deg) rotateZ(330deg);
+    -webkit-transform: rotateX(34deg) rotateZ(355deg);
     backface-visibility: visible;
     transform: rotateX(34deg) rotateZ(355deg);
 }
