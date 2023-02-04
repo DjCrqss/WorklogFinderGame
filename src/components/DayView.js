@@ -36,10 +36,12 @@ export default function DayView() {
     function handleResize(){
         setHeight(window.innerHeight/screenCoveringAmount * 1.3);
     };
+
     useEffect(() => {
        window.addEventListener('resize', handleResize)
        return () => window.removeEventListener('resize', handleResize)
     }, []);
+    
     useEffect(()=>{
         setBlocks(createBlocks());
         handleResize();
