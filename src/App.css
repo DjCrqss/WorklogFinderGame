@@ -8,6 +8,7 @@ body{
   overflow: hidden;
   max-height: 100vh;
   max-width: 100vw;
+  min-height: 500px;
 }
 
 
@@ -19,7 +20,7 @@ body{
     transform-origin: top left;
     -webkit-transform: rotateX(34deg) rotateZ(355deg);
     backface-visibility: visible;
-    transform: rotateX(34deg) rotateZ(355deg);
+    transform: rotateX(34deg) rotateZ(355deg) translateY(-5vh);
 }
 
 .time-block{
@@ -31,6 +32,8 @@ body{
   color: darkgray;
   width: 250px;
   box-sizing: border-box;
+  transition: height 0.25s, top 0.25s;
+  transition-timing-function: ease-in-out;
 }
 
 .work-block-container{
@@ -38,10 +41,12 @@ body{
   z-index: 2;
   display: flex;
   align-items: center;
+  transition: height 0.5s, top 0.5s;
+  transition-delay: 0.25s;
+  transition-timing-function: ease-in-out;
 }
 
 .work-block{
-  
   height: 70%;
   padding: 0.75em;
   position: absolute;
@@ -51,20 +56,40 @@ body{
   box-sizing: border-box;
   border-radius: 0.5em;
 
+  /* transition from locked to unlocked */
+  transition-delay: 0.5s !important;
+  transition: 1s;
+
+}
+
+.work-block-locked{
   /* Ghost styling */
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(6px);
+
   /*border: 1px solid #d3d3d338; STYLE 1: 3D
   background-color: rgba(224, 224, 224, 0.189);
   box-shadow: #5252523b -26px 1px 20px 0px, inset #1a1a1a7a -7px -4px 9px, inset #ffffff7a 4px 5px 8px;*/ 
   border: 3px dashed #ffbe70;
   background-color: rgb(255 172 73 / 36%);
-  box-shadow: #bf8e5575 -26px 1px 20px 0px;
+  box-shadow: #cf914975 -26px 1px 30px 0px;
+  
+  color: rgb(213 163 74);;
+  font-weight: bold;
 
 
 
   margin-left: 30px;
 }
 
+.work-block-unlocked{
+  backdrop-filter: blur(6px);
+    border: 3px solid #95d3f8;
+    background-color: rgb(175 227 255 / 81%);
+    box-shadow: #49abcf4a -9px 1px 4px 0px;
+    color: rgb(114 174 210);
+    font-weight: bold;
+    margin-left: 8px;
+}
 
 
 

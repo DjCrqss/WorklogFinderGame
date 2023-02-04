@@ -13,6 +13,7 @@ function App() {
 
   return (
     <div className="App">
+          {/* Score and info popup */}
    
           {/* Content */}
           <QrScanner />
