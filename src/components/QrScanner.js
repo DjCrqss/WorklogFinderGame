@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {Html5Qrcode } from "html5-qrcode"
+import { DataContext } from "../dataContext";
 
-export default function QrScanner({active, setActive}){
+export default function QrScanner(){
     const [html5QrCode, setHtml5QrCode] = useState(undefined);
+    const {qrPopupOpen, setQrPopupOpen} = useContext(DataContext);
 
     function scanSuccess(decodedText, decodedResult){
         console.log(decodedText, decodedResult);
-        setActive(false);
+        setQrPopupOpen(false);
     }
 
     function qrStart(){
@@ -26,7 +28,7 @@ export default function QrScanner({active, setActive}){
 
     useEffect(()=>{
         try {
-            if(active){
+            if(qrPopupOpen){
                 qrStart();
             } else {
                 if(!html5QrCode){return};
@@ -36,7 +38,7 @@ export default function QrScanner({active, setActive}){
             console.log(error);
         }
        
-    }, [active])
+    }, [qrPopupOpen])
 
     
 
@@ -44,9 +46,9 @@ export default function QrScanner({active, setActive}){
 
     return (
         <>
-            <div className="popupBackdrop" onClick={()=>{setActive(false)}} style={{opacity: active ? '1' : '0'  , pointerEvents: active ? 'all' : 'none' }}></div>
-            <div className="popupDrawer" style={{bottom: active? '0' : '-75vmax'}}>
-                <div id="reader" style={{width: '80%'}}>Camera loading or permissions not given.</div>
+            <div className="popupBackdrop" onClick={()=>{setQrPopupOpen(false)}} style={{opacity: qrPopupOpen ? '1' : '0'  , pointerEvents: qrPopupOpen ? 'all' : 'none' }}></div>
+            <div className="popupDrawer" style={{bottom: qrPopupOpen? '0' : '-75vmax'}}>
+                <div id="reader" style={{width: 'calc(100% - 1em)'}}>Camera loading or permissions not given.</div>
             </div>
         </>
        

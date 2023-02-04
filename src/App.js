@@ -2,21 +2,25 @@
 import './App.css';
 import QrScanner from './components/QrScanner';
 import DayView from './components/DayView';
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
+import { DataContext } from './dataContext';
+
 
 function App() {
-  const [qrPopupOpen, setQrPopupOpen] = useState(false);
+  const {qrPopupOpen, setQrPopupOpen} = useContext(DataContext);
 
 
 
   return (
     <div className="App">
-      
-        
-      <QrScanner active={qrPopupOpen} setActive={setQrPopupOpen}/>
-      <DayView />
-      <div id="qr-fab" onClick={()=>{setQrPopupOpen(!qrPopupOpen)}}>Scan QR codes</div>
-        
+   
+          {/* Content */}
+          <QrScanner />
+          <DayView />
+
+          {/* Buttons */}
+          <div id="qr-fab" onClick={()=>{setQrPopupOpen(!qrPopupOpen)}}>Scan QR codes</div>
+    
     </div>
   );
 }
