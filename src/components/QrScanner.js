@@ -11,22 +11,17 @@ export default function QrScanner({active, setActive}){
 
     function qrStart(){
         let newQr = new Html5Qrcode(/* element id */ "reader");
-        
-        Html5Qrcode.getCameras().then(devices => {
-            if (devices && devices.length) {
-              var cameraId = devices[0].id;
-              newQr.start({facingMode: { exact: "environment"}}, 
-                {
-                  fps: 10,    // Optional, frame per seconds for qr code scanning
-                  aspectRatio: 1,
-                },
-                scanSuccess);
-            }
-          }).catch(err => {
-            // handle err
-          });
 
-          setHtml5QrCode(newQr);
+        newQr.start(
+            { facingMode: "environment" },
+            {
+                fps: 10,    // Optional, frame per seconds for qr code scanning
+                aspectRatio: 1,
+            },
+            scanSuccess
+        );
+
+        setHtml5QrCode(newQr);
     }
 
     useEffect(()=>{
