@@ -15,7 +15,7 @@ export default function QrScanner({active, setActive}){
         Html5Qrcode.getCameras().then(devices => {
             if (devices && devices.length) {
               var cameraId = devices[0].id;
-              newQr.start(cameraId, 
+              newQr.start({facingMode: { exact: "environment"}}, 
                 {
                   fps: 10,    // Optional, frame per seconds for qr code scanning
                   aspectRatio: 1,
