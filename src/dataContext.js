@@ -14,7 +14,7 @@ export const DataContextProvider = (props) => {
     // Environment variables
     const [qrPopupOpen, setQrPopupOpen] = useState(false);
     const [infoPanelOpen, setInfoPanelOpen] = useState(checkFirstLoad());
-    const [ResultPanelOpen, setResultPanelOpen] = useState(false);
+    const [resultPanelOpen, setResultPanelOpen] = useState(false);
     const [height, setHeight] = useState(window.innerHeight/screenCoveringAmount * scale);
 
 
@@ -68,7 +68,7 @@ export const DataContextProvider = (props) => {
     }
 
     function qrDecryptAndSave(link){
-        let newData = data;
+        let newData = [...data];
 
         // allow both URL input and direct code input
         let code;
@@ -127,7 +127,7 @@ export const DataContextProvider = (props) => {
         qrPopupOpen,
         data,
         infoPanelOpen,
-        ResultPanelOpen,
+        resultPanelOpen,
         setQrPopupOpen,
         setData,
         setInfoPanelOpen,

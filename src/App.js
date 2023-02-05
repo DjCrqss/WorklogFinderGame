@@ -18,6 +18,7 @@ function App() {
     <div className="App">
           {/* Main popup panels */}
           <InfoPanel />
+          <ResultPanel />
 
           {/* Score and info popup */}
           <Scoreboard />
