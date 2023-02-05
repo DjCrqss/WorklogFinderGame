@@ -4,10 +4,8 @@ import WorkBlock from './WorkBlock'
 import { DataContext } from "../dataContext";
 
 export default function DayView() {
-    const {objectiveAmount, screenCoveringAmount, height, data} = useContext(DataContext);
-
+    const {screenCoveringAmount, height, data} = useContext(DataContext);
     const [blocks, setBlocks] = useState(createBlocks());
-    // const [worklogs, setWorklogs] = useState(createWorklogs()); // or get from local storage later
 
     function createBlocks(){
         let  blockArray = [];
@@ -17,14 +15,9 @@ export default function DayView() {
         return blockArray;
     }
 
-    // function createWorklogs(){
-    //     let workLogs = [];
-    //     for(let slot = 1; slot < objectiveAmount + 1; slot++) {
-    //         workLogs.push({ title: "Find me @ Team '23!", slot: slot, isCollected: false});
-    //     }
-    //     return workLogs;
-    // }
-   
+    useEffect(()=>{
+        setBlocks(createBlocks());
+    }, [screenCoveringAmount]);
 
     return (
         <div id="dayview-container">

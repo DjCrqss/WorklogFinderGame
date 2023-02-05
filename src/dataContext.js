@@ -7,14 +7,26 @@ export const DataContextProvider = (props) => {
     const objectiveAmount = 4; // up to 8 looks best
     const screenCoveringAmount = objectiveAmount + 2;
     const [data, setData] = useState(loadSavedData());
-
     const scale = 1.4;
 
 
     // Environment variables
     const [qrPopupOpen, setQrPopupOpen] = useState(false);
+    const [infoPanelOpen, setInfoPanelOpen] = useState(checkFirstLoad());
+    const [ResultPanelOpen, setResultPanelOpen] = useState(false);
     const [height, setHeight] = useState(window.innerHeight/screenCoveringAmount * scale);
 
+
+
+    // Checks if this is the first time the user opens the app
+    function checkFirstLoad(){
+        let firstLoad = localStorage.getItem("firstLoad");
+        if(firstLoad === null){
+            localStorage.setItem("firstLoad", "false");
+            return true;
+        }
+        return false;
+    }
 
     // Functions
     // load data from local storage
@@ -64,8 +76,12 @@ export const DataContextProvider = (props) => {
         height,
         qrPopupOpen,
         data,
+        infoPanelOpen,
+        ResultPanelOpen,
         setQrPopupOpen,
         setData,
+        setInfoPanelOpen,
+        setResultPanelOpen
     }
 
     return <DataContext.Provider value={dataContextStore}>{props.children}</DataContext.Provider>

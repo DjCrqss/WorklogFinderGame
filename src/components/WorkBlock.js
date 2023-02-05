@@ -5,6 +5,7 @@ export default function WorkBlock({lockedTitle, unlockedTitle, slot, height, isC
         <div className ="work-block-container" style={{top: height*slot, height:  height}}>
             <div className={"work-block " + classStyle}>
                 {isCollected? unlockedTitle : lockedTitle}
+                <span className='work-block-interval'>15m</span>
             </div>
         </div>
     );

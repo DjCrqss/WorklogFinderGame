@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import {Html5Qrcode } from "html5-qrcode"
 import { DataContext } from "../dataContext";
+import confetti from 'canvas-confetti';
 
 export default function QrScanner(){
     const [html5QrCode, setHtml5QrCode] = useState(undefined);
     const {qrPopupOpen, setQrPopupOpen, data, setData} = useContext(DataContext);
 
     function scanSuccess(decodedText, decodedResult){
-        // console.log(decodedText, decodedResult);
+        setQrPopupOpen(false);
+        window?.navigator?.vibrate?.(100);
 
         let newData = data;
         // get decoded text and check if it is reset_all and if so reset all data
@@ -25,25 +27,26 @@ export default function QrScanner(){
         // save data
         console.log("Data saved");
         localStorage.setItem("data", JSON.stringify(data));
-        
-        setQrPopupOpen(false);
+
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.8 },
+            colors : ['#fcba03', '#fca103', '#ebf263', '#ffd996', '#fff5c2']
+          });
     }
 
+    // Turn on scanner
     function qrStart(){
         let newQr = new Html5Qrcode(/* element id */ "reader");
-
         newQr.start(
             { facingMode: "environment" },
-            {
-                fps: 10,    // Optional, frame per seconds for qr code scanning
-                aspectRatio: 1,
-            },
+            {fps: 10, aspectRatio: 1},
             scanSuccess
         );
-
         setHtml5QrCode(newQr);
     }
-
+    // Disable QR access when popup is closed
     useEffect(()=>{
         try {
             if(qrPopupOpen){
@@ -52,15 +55,8 @@ export default function QrScanner(){
                 if(!html5QrCode){return};
                 html5QrCode.stop();
             }
-        } catch (error) {
-            console.log(error);
-        }
-       
+        } catch (error){console.log(error); }
     }, [qrPopupOpen])
-
-    
-
-    
 
     return (
         <>
