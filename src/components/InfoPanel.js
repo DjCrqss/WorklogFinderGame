@@ -17,7 +17,7 @@ export default function InfoPanel() {
                     <p>If you get a little stuck, don't be scared to ask for help! Our stellar support is available here too ;)</p>
                 </div>
                 <h3>Good luck and have fun!</h3>
-                <div id="close-button" onClick={()=>{setInfoPanelOpen(false)}}>x</div>
+                <div id="close-button" onClick={()=>{setInfoPanelOpen(false)}}>✖</div>
             </div>
         </>
     );

@@ -6,7 +6,7 @@ export default function ResultPanel() {
     return (
         <>
             <div className="fullscreen-panel-backdrop" style={{opacity: resultPanelOpen ? '1' : '0'  , pointerEvents: resultPanelOpen ? 'all' : 'none' }} onClick={()=>{setResultPanelOpen(false)}}></div>
-            <div className="fullscreen-panel" style={{opacity: resultPanelOpen ? '1' : '0'  , pointerEvents: resultPanelOpen ? 'all' : 'none' }}>
+            <div className="fullscreen-panel" style={{opacity: resultPanelOpen ? '1' : '0'  , pointerEvents: resultPanelOpen ? 'all' : 'none', alignItems: 'center' }}>
             <h1>CONGRATS!</h1>
             <div>
                 <p>You found all the worklogs!</p>
@@ -14,9 +14,9 @@ export default function ResultPanel() {
                 <p>Now come back to TechTime's stall and collect your reward! You deserve it.</p>
                 <br></br>
                 <p>Have we piqued your interest yet? We would love you to check out EasyTime itself and see if it suits you.</p>
-                <a href="https://techtime.co.nz/display/TECHTIME/EasyTime" target="_blank">Visit EasyTime here</a>
             </div>
-            <div id="close-button" onClick={()=>{setResultPanelOpen(false)}}>x</div>
+            <a id="easytime-button" href="https://techtime.co.nz/display/TECHTIME/EasyTime" target="_blank">Visit EasyTime!</a>
+            <div id="close-button" onClick={()=>{setResultPanelOpen(false)}}>✖</div>
         </div>
         </>
         
