@@ -7,8 +7,10 @@ export const DataContextProvider = (props) => {
     // Custom variables
     const objectiveAmount = 4; // up to 8 looks best
     const screenCoveringAmount = objectiveAmount + 2;
+    const templates = ["Waited for Jira instance to start up", "Had a good snack", "Wrote some code with help from Stack Overflow", "Designed a mini game for people to play", "Chatted to app vendors", "Wasted company time"];
     const [data, setData] = useState(loadSavedData());
     const scale = 1.4;
+   
 
 
     // Environment variables
@@ -36,6 +38,7 @@ export const DataContextProvider = (props) => {
         }
         return false;
     }
+    
 
     // Functions
     function loadSavedData(){
@@ -50,6 +53,7 @@ export const DataContextProvider = (props) => {
             if(cards.length !== objectiveAmount){
                 console.log("Data is not up to date");
                 cards = createInitialData();
+                localStorage.removeItem("data");
             }
             
         }
@@ -62,9 +66,18 @@ export const DataContextProvider = (props) => {
         console.log("Initial data created");
         const cards = [];
         for(let slot = 1; slot < objectiveAmount +1; slot++) {
-            cards.push({ lockedTitle: "Find me @ Team '23", unlockedTitle: "You found me!", slot: slot, isCollected: false});
+            let title = "You found me!";
+            if(slot -1 < templates.length){
+                title = templates[slot - 1];
+            }
+            
+            cards.push({ lockedTitle: createHiddenTitle(title), unlockedTitle: title, slot: slot, isCollected: false});
         }
         return cards;
+    }
+
+    function createHiddenTitle(title){
+        return title.replace(/\S/g,'#');  // █ ▒ 
     }
 
     function qrDecryptAndSave(link){

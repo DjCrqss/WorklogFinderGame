@@ -9,8 +9,15 @@ export default function DayView() {
 
     function createBlocks(){
         let  blockArray = [];
+        let hours = 1;
+        let mins = 0;
         for(let slot = 0; slot < screenCoveringAmount + 1; slot++) {
-            blockArray.push({ title: (slot+1).toString().padStart(2, '0') + ":00", slot: slot});
+            blockArray.push({ title: (hours).toString().padStart(2, '0') + ":" + (mins).toString().padStart(2, '0'), slot: slot});
+            mins += 15;
+            if(mins === 60){
+                mins = 0;
+                hours += 1;
+            }
         }
         return blockArray;
     }
