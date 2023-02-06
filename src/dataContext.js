@@ -77,7 +77,7 @@ export const DataContextProvider = (props) => {
     }
 
     function createHiddenTitle(title){
-        return title.replace(/\S/g,'#');  // █ ▒ 
+        return title.replace(/\S/g,'#');
     }
 
     function qrDecryptAndSave(link){
@@ -98,6 +98,7 @@ export const DataContextProvider = (props) => {
                 localStorage.removeItem("data");
             }
             setData(createInitialData());
+            return;
         }
         else if(!isNaN(result)){
             let num = +result;
