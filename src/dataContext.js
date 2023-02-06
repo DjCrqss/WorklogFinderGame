@@ -94,6 +94,9 @@ export const DataContextProvider = (props) => {
         
         if(result === "reset_all"){
             newData.forEach((value) => {value.isCollected = false});
+            if(localStorage.getItem("data") !== null){
+                localStorage.removeItem("data");
+            }
         }
         else if(!isNaN(result)){
             let num = +result;
