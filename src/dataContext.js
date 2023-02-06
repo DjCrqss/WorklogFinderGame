@@ -97,6 +97,7 @@ export const DataContextProvider = (props) => {
             if(localStorage.getItem("data") !== null){
                 localStorage.removeItem("data");
             }
+            setData(createInitialData());
         }
         else if(!isNaN(result)){
             let num = +result;
